@@ -1,0 +1,79 @@
+{% extends 'houses/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}<title>Каталог</title>{% endblock %}
+</head>
+<body>
+
+{% block content %}
+
+<section class="sale_section layout_padding">
+    <div class="container-fluid">
+        <div class="heading_container">
+            <h2>
+                House For Sale
+            </h2>
+            <p>
+                There are many variations of USA houses for sale
+            </p>
+        </div>
+
+        <section class="find_section ">
+            <div class="container">
+                <form action="{% url 'houseSearch' %}" method="get">
+                    <div class=" form-row">
+                        <div class="col-md-5">
+                            <input name='c' type="text" class="form-control" placeholder="Search Your Categories " list="categoryname" id="categoryname-choice">
+                            <datalist id="categoryname">
+                                {% for type in types %}
+                                <option style="font-size: 16px;" value="{{ type.type_house }}"></option>
+                                {% endfor %}
+                            </datalist>
+                        </div>
+                        <div class="col-md-5">
+                            <input name='s' type="text" class="form-control" placeholder="Location " list="cityname" id="cityname-choice">
+                            <datalist id="cityname">
+                                {% for location in locations %}
+                                <option style="font-size: 16px;" value="{{ location.city }}"></option>
+                                {% endfor %}
+                            </datalist>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="">
+                                search
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <div class="sale_container">
+            {% for house in houses %}
+            <div class="box">
+                <div class="img-box">
+                    <img src="{{ house.image.url }}" alt="">
+                </div>
+                <div class="detail-box">
+                    <h6>
+                        <a href="#">{{ house.name }}</a>
+                    </h6>
+                    <p>
+                        {{ house.price }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
+
+</body>
+</html>

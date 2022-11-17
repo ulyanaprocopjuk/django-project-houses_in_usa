@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    {% block title %}
+
+    {% endblock %}
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="index.html">
+            <img src="{% static 'images/logo.png' %}" alt="" >
+          </a>
+          <div class="navbar-collapse" id="">
+            <ul class="navbar-nav_other justify-content-between ">
+              <div class="User_option_other">
+                <li class="">
+                  <a class="mr-4" href="{% url 'userLogin' %}">
+                    Login
+                  </a>
+                  <a class="" href="{% url 'userRegister' %}">
+                    Sign up
+                  </a>
+                </li>
+              </div>
+            </ul>
+
+            <div class="custom_menu-btn_other">
+              <button onclick="openNav()">
+                <span class="s-1">
+
+                </span>
+                <span class="s-2">
+
+                </span>
+                <span class="s-3">
+
+                </span>
+              </button>
+            </div>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="{% url 'home' %}">HOME</a>
+<!--                <a href="about.html">ABOUT</a>-->
+                <a href="{% url 'catalog' %}">CATALOG</a>
+<!--                <a href="price.html">PRICING</a>-->
+<!--                <a href="contact.html">CONTACT US</a>-->
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+{% block content %}
+
+{% endblock %}
+
+<section class="container-fluid footer_section ">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="https://html.design/">Free Html Templates</a>
+      </p>
+    </div>
+</section>
+
+<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shop</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+</head>
+<body>
+
+<div class="hero_area">
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <a class="navbar-brand" href="{% url 'home' %}">
+          <img src="{% static 'images/logo.png' %}" alt="">
+        </a>
+        <div class="navbar-collapse" id="">
+          <ul class="navbar-nav justify-content-between">
+            <div class="User_option">
+              <li class="">
+                <a class="mr-4" href="{% url 'userLogin' %}">
+                  Login
+                </a>
+                <a class="" href="{% url 'userRegister' %}">
+                  Sign up
+                </a>
+              </li>
+            </div>
+          </ul>
+
+          <div class="custom_menu-btn">
+            <button onclick="openNav()">
+                <span class="s-1">
+                </span>
+              <span class="s-2">
+                </span>
+              <span class="s-3">
+                </span>
+            </button>
+          </div>
+          <div id="myNav" class="overlay">
+            <div class="overlay-content">
+              <a href="{% url 'home' %}">HOME</a>
+              <a href="{% url 'catalog' %}">CATALOG</a>
+<!--              <a href="">YOUR CART</a>-->
+<!--              <a href="">CONTACT US</a>-->
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+
+    <section class="slider_section ">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4 offset-md-1">
+            <div class="detail-box">
+              <h1>
+                <span> Modern</span> <br>
+                Apartment <br>
+                House
+              </h1>
+              <p>
+                We're glad to see you! Here you'll find the most comfortable place for yourself and your family. Follow us and choose...
+              </p>
+              <div class="btn-box">
+                <a href="{% url 'catalog' %}" class="">
+                  see our catalog
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</div>
+
+<section class="find_section ">
+  <div class="container">
+    <form action="{% url 'houseSearch' %}" method="get">
+      <div class=" form-row">
+        <div class="col-md-5">
+          <input name='c' type="text" class="form-control" placeholder="Search Your Categories " list="categoryname" id="categoryname-choice">
+          <datalist id="categoryname">
+            {% for type in types %}
+            <option style="font-size: 16px;" value="{{ type.type_house }}"></option>
+            {% endfor %}
+          </datalist>
+        </div>
+        <div class="col-md-5">
+          <input name='s' type="text" class="form-control" placeholder="Location " list="cityname" id="cityname-choice">
+          <datalist id="cityname">
+            {% for location in locations %}
+            <option style="font-size: 16px;" value="{{ location.city }}"></option>
+            {% endfor %}
+          </datalist>
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="">
+            search
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<section class="about_section layout_padding-bottom">
+  <div class="square-box">
+    <img src="{% static 'images/square.png' %}" alt="">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="img-box">
+          <img style="width:100%;" src="{% static 'images/about-img.png' %}" alt="">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="detail-box">
+          <div class="heading_container">
+            <h2>
+              About Our Apartment
+            </h2>
+          </div>
+          <p>
+            There are many variations of apartments of the world, choose according to your needs by setting the desired parameters.
+          </p>
+          <a href="{% url 'catalog' %}">
+            Read More
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container-fluid footer_section ">
+    <div class="container">
+        <p>
+            &copy; <span id="displayYear"></span> All Rights Reserved By
+            <a href="https://html.design/">Free Html Templates</a>
+        </p>
+    </div>
+</section>
+
+
+<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+
+</body>
+</html>
